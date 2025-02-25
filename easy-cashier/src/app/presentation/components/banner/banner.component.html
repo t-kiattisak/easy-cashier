@@ -1,0 +1,33 @@
+<div class="relative rounded-lg flex items-stretch flex-col">
+  <img src="/images/logo.png" alt="The Gang Technology" class="w-[132px] h-[71px] mb-24 md:mb-4 object-contain">
+
+  <div class="bg-black text-white rounded-lg p-6 flex flex-col lg:flex-row-reverse items-center gap-4">
+    <div class="flex justify-center -mt-36 grow">
+      <img src="/images/shoes.png" alt="Shoe" class="max-w-[274px]">
+    </div>
+
+    <div class="w-full space-y-4">
+      <h2 class="text-red-400 text-lg font-bold">NEW COLLECTION !</h2>
+      <h1 class="text-4xl font-extrabold">
+        <span class="text-white">SNEAKER</span> <span class="text-orange-400">GANG</span>
+      </h1>
+      <p class="text-gray-300">
+        Sport keeps us fit. Keeps you mindful. Brings us together. Through sport we have the power to change lives.
+        Whether it is through stories of inspiring athletes.
+      </p>
+      <app-button (clickEvent)="openModal()" variant="primaryGradient" class="h-10 text-white py-2 px-4 flex items-center gap-2">
+        <img src="icons/add.svg" /> Add New Product
+      </app-button>
+    </div>
+  </div>
+</div>
+
+
+<app-modal [open]="open" >
+  <ng-container *ngIf="open">
+  <app-add-product-form
+    (onClose)="closeModal()"
+    (onCreate)="addProduct($event)" />
+  </ng-container>
+</app-modal>
+

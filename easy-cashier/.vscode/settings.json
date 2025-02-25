@@ -1,0 +1,23 @@
+{
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(((?:[^()]|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]+)[\"'`]"],
+    ["cn\\$begin:math:text\\$((?:[^()]|\\\\([^()]*\\$end:math:text\\$)*)\\)", "[\"'`]([^\"'`]+)[\"'`]"],
+    ["className=\\\"([^\"]+)\\\"", "class=\\\"([^\"]+)\\\""]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html",
+    "angular": "html",
+    "postcss": "css"
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html",
+    "angular": "html",
+    "postcss": "css"
+  },
+  "eslint.workingDirectories": [
+    { "pattern": "src/apps/*/" }
+  ]
+}

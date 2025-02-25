@@ -1,0 +1,62 @@
+  <div class="flex flex-col mb-4 space-y-4">
+    <div class="mt-4 text-right bg-light-gray flex items-center rounded-lg py-[13px] px-[10px]">
+      <p class="text-text-b1 text-black font-normal">Total: </p>
+      <h3 class="text-text-b1 text-black font-semibold flex-1 text-right">
+        {{ orderProvider.totalPrice() !== 0 ? (orderProvider.totalPrice() | currencyFormat) : '-' }}
+      </h3>
+    </div>
+    <hr/>
+    <div class="flex justify-between items-center">
+      <div class="flex gap-4 items-center">
+        <img src="/icons/money-3.svg" alt="money" class="w-[24px] h-[24px]" />
+        <h2 class="text-h3 font-semibold">Payment Summary</h2>
+      </div>
+    </div>
+  </div>
+
+    <div class="flex gap-4 items-end pb-4">
+      <app-input-number
+        class="w-full"
+        label="Received Money"
+        [value]="receivedMoney"
+        placeholder="Enter received money"
+        (valueChange)="handleMoneyChange($event)"
+      ></app-input-number>
+      <app-button
+        variant="secondary"
+        size="md"
+        (click)="calculateChange()"
+      >
+        Calculate
+      </app-button>
+    </div>
+
+    <ng-container *ngIf="orderProvider.withdrawalOptions.length > 0; else noOptions">
+      <div class="flex-1 overflow-auto">
+        <div *ngFor="let optionGroup of orderProvider.withdrawalOptions; let i = index">
+          <h2 class="text-h4 font-semibold mt-4 pb-2.5">Customer Withdrawal Options {{ i + 1 }}</h2>
+          <div class="grid grid-cols-2 gap-2.5">
+            <app-withdrawal-option
+              *ngFor="let option of optionGroup"
+              [coin]="option.coin"
+              [quantity]="option.quantity">
+            </app-withdrawal-option>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #noOptions>
+      <div class="flex-1 card bg-primary-black flex flex-col items-center justify-center space-y-3 text-text-darkGray p-4 gap-2">
+        <img src="/icons/note-remove.svg" alt="note-remove" />
+        Please select a product and provide the amount of money received from the customer
+      </div>
+    </ng-template>
+
+  <div class="mt-4 text-right bg-secondary-brown flex items-center rounded-lg py-[13px] px-[10px]">
+    <p class="text-text-b1 text-black font-normal">Total: </p>
+    <h3 class="text-text-b1 text-black font-semibold flex-1 text-right">
+      {{ orderProvider.change !== null ? (orderProvider.change | currencyFormat) : '-' }}
+    </h3>
+  </div>
+

@@ -1,0 +1,35 @@
+<ng-container *ngIf="productProvider.productsWithQty().length > 0; else noOptions">
+<div class="grid grid-cols-2 sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
+  <div *ngFor="let product of productProvider.productsWithQty()" class="card text-left bg-primary-dark p-4 rounded-lg ">
+    <h3 class="font-medium text-white line-clamp-1">{{ product.name }}</h3>
+    <h3 class="text-text-darkGray line-clamp-2">{{ product.description }}</h3>
+
+    <div class="flex items-center mt-2">
+      <p class="text-sm flex-1 font-semibold text-white text-b2">{{ product.price | currencyFormat }}</p>
+      <ng-container *ngIf="product.quantity === 0; else noOptions">
+      <app-button (clickEvent)="addToCart(product)" variant="danger" class="text-white rounded-full flex justify-center items-center min-w-8 h-8 w-8 px-1">
+        <img src="icons/shopping-cart.svg" class="h-4 w-4 object-cover" />
+      </app-button>
+    </ng-container>
+
+      <ng-template #noOptions>
+        <app-button variant="danger"  class="text-white rounded-full flex items-center w-[78px] h-8 px-1">
+          <img src="icons/add.svg" (click)="orderProvider.updateQuantity(product.id,product.quantity + 1)" class="h-4 w-4 object-cover" />
+          <p class="flex-1 line-clamp-1">{{product.quantity}}</p>
+          <img src="icons/minus.svg" (click)="orderProvider.updateQuantity(product.id,product.quantity - 1)" class="h-4 w-4 object-cover" />
+        </app-button>
+      </ng-template>
+    </div>
+  </div>
+</div>
+</ng-container>
+
+<ng-template #noOptions>
+  <div class="flex-1 card bg-black h-80 flex flex-col items-center justify-center space-y-3 text-text-darkGray p-4 gap-2">
+    <img src="/icons/document-text.svg" alt="note-remove" class="text-white" />
+    <div>
+      <p class="text-white font-semibold">No data available</p>
+      <p class="text-text-darkGray">Please add product information.</p>
+    </div>
+  </div>
+</ng-template>

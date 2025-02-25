@@ -1,0 +1,11 @@
+<div class="min-h-screen flex flex-col lg:flex-row gap-2 bg-[url('/images/BG.jpg')] p-4">
+  <div class="w-full xl:w-[calc(100%-468px)] lg:w-[calc(100%-400px)] flex flex-col">
+      <app-banner></app-banner>
+      <router-outlet></router-outlet>
+  </div>
+
+  <div class="w-full xl:w-[468px] lg:w-[400px] h-fit lg:h-screen static lg:fixed right-0 top-0 bg-[#141414] text-white p-4 flex flex-col">
+    <app-current-order class="flex-1 max-h-80 lg:max-h-full overflow-hidden"></app-current-order>
+    <app-payment-summary class="h-[500px] flex flex-col"></app-payment-summary>
+  </div>
+</div>

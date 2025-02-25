@@ -1,0 +1,12 @@
+<div class="flex flex-col gap-2">
+  <label *ngIf="label" class="text-sm text-white">{{ label }}</label>
+  <input
+    [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    (keydown)="onKeyDown($event)"
+    (input)="onInputChange($event)"
+    (blur)="onTouched()"
+    [class]="getClass()"
+      />
+</div>

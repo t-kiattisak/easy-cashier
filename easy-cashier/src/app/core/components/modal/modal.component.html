@@ -1,0 +1,11 @@
+<div *ngIf="open" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-[#000000D9] transition-opacity" aria-hidden="true" (click)="handleClose()"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div class="flex min-h-full justify-center text-center items-center p-2">
+      <div class="relative transform overflow-hidden p-8 text-white rounded-[10px] bg-border-gray text-left shadow-xl transition-all w-full max-w-[418px]">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

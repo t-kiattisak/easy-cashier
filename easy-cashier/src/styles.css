@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Kanit', sans-serif;
+
+  --color-primary-gradient: linear-gradient(102deg, #E55250 35.35%, #FFC7A0 124.4%);
+  --color-primary-red: #FD5351;
+  --color-primary-peach: #FFC7A0;
+  --color-primary-black: #212121;
+  --color-primary-dark: #101010;
+  --color-primary-white: #FFFFFF;
+
+  --color-secondary-peach: #FFC7A0;
+  --color-secondary-brown: #C9AC83;
+
+  --color-text-darkGray: #868686;
+  --color-text-gray: #929292;
+  --color-text-light: #F5EFE2;
+  --color-text-white: #FFFFFF;
+
+  --color-border-gray: #373737;
+
+  --color-light-gray: #B9B9B9;
+
+  /* Font Sizes */
+  --text-h1: 36px;
+  --text-h2: 24px;
+  --text-h3: 20px;
+  --text-h4: 16px;
+  --text-b1: 20px;
+  --text-b2: 16px;
+  --text-b3: 14px;
+}
+
+
+@layer components {
+  .btn-primary-gradient {
+    @apply bg-linear-to-r from-[#E55250] to-[#FFC7A0]
+  }
+  .card {
+    @apply rounded-lg text-center border border-border-gray;
+  }
+}
